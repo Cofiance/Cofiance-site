@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cofiance – Coming Soon</title>
+  <meta name="description" content="Cofiance – financiële rust voor zzp’ers, MKB en particulieren. Website in ontwikkeling.">
+  <meta property="og:title" content="Cofiance – Coming Soon">
+  <meta property="og:description" content="Financiële expertise + coaching. Binnenkort live.">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --bg: #0f172a;      /* slate-900 */
+      --card: #111827;    /* gray-900 */
+      --text: #e5e7eb;    /* gray-200 */
+      --muted: #94a3b8;   /* slate-400 */
+      --accent: #22c55e;  /* green-500 */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: radial-gradient(60rem 60rem at 20% 10%, rgba(255,255,255,0.05), transparent),
+                  radial-gradient(60rem 60rem at 80% 90%, rgba(255,255,255,0.04), transparent),
+                  var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    .card {
+      width: min(720px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin: 0 0 0.25rem;
+      letter-spacing: 0.4px;
+    }
+    .tagline {
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+      font-size: 1rem;
+    }
+    .lead {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.8rem 1.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--accent);
+      font-weight: 600;
+      transition: transform .08s ease, filter .2s ease;
+    }
+    .cta:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .small {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+    }
+    .list li { margin: 0.25rem 0; }
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+    .dot {
+      display: inline-block;
+      width: .6rem; height: .6rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34,197,94,.5);
+      translate: 0 2px;
+    }
+    footer { margin-top: 1rem; color: var(--muted); font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-label="Cofiance Coming Soon">
+    <div class="brand">
+      <h1>Cofiance</h1>
+      <span class="dot" aria-hidden="true"></span>
+    </div>
+    <p class="tagline">Empowering confidence through finance &amp; coaching</p>
+    <p class="lead">
+      We bouwen aan iets goeds. Cofiance helpt zzp’ers, MKB-ondernemers en particulieren
+      met <strong>grip op geld</strong> en <strong>rust in het hoofd</strong>—via administratieve oplossingen,
+      tijdelijke ondersteuning en persoonlijke coaching.
+    </p>
+    <div class="grid">
+      <div>
+        <strong>Wat je straks van ons krijgt:</strong>
+        <ul class="list">
+          <li>Financiële administratie &amp; advies (zzp, MKB)</li>
+          <li>Interim &amp; projectmatige ondersteuning</li>
+          <li>Start-up administratie opzetten</li>
+          <li>Coaching voor management &amp; particulieren</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">
+      Vragen of alvast kennismaken?
+      <a class="cta" href="mailto:info@voorbeeldmail.nl?subject=Kennismaking%20Cofiance">Mail ons</a>
+    </p>
+    <footer>&copy; <span id="year"></span> Cofiance. Alle rechten voorbehouden.</footer>
+  </main>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
