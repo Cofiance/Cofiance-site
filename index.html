@@ -1,127 +1,165 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cofiance – Coming Soon</title>
-  <meta name="description" content="Cofiance – financiële rust voor zzp’ers, MKB en particulieren. Website in ontwikkeling.">
-  <meta property="og:title" content="Cofiance – Coming Soon">
-  <meta property="og:description" content="Financiële expertise + coaching. Binnenkort live.">
-  <meta property="og:type" content="website">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cofiance — Coming Soon</title>
+  <meta name="description" content="Cofiance. Coming soon." />
+  <!-- Zet op index,follow zodra je live wilt -->
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Webfont (strak & modern). Wil je later lokaal hosten, kan dat. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #0f172a;      /* slate-900 */
-      --card: #111827;    /* gray-900 */
-      --text: #e5e7eb;    /* gray-200 */
-      --muted: #94a3b8;   /* slate-400 */
-      --accent: #22c55e;  /* green-500 */
+    :root{
+      --bg: #0f1115;          /* donkergrijs/zwart */
+      --fg: #f5f7fb;          /* bijna-wit tekst */
+      --muted:#b7bdc9;        /* secundaire tekst */
+      --accent:#34d399;       /* groene punt (aanpasbaar) */
+      --maxw: 64rem;
     }
+
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      background: radial-gradient(60rem 60rem at 20% 10%, rgba(255,255,255,0.05), transparent),
-                  radial-gradient(60rem 60rem at 80% 90%, rgba(255,255,255,0.04), transparent),
-                  var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 800px at 70% -10%, #171a21 0%, var(--bg) 60%);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      min-height: 100%;
       display: grid;
       place-items: center;
-      padding: 2rem;
+      padding: 4rem 1.5rem;
     }
+
     .card {
-      width: min(720px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      padding: clamp(1.25rem, 4vw, 2rem);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    }
-    h1 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin: 0 0 0.25rem;
-      letter-spacing: 0.4px;
-    }
-    .tagline {
-      color: var(--muted);
-      margin: 0 0 1.25rem;
-      font-size: 1rem;
-    }
-    .lead {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      margin: 0.75rem 0 1.25rem;
-    }
-    .grid {
+      width: 100%;
+      max-width: var(--maxw);
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
+      gap: 2rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
-    .cta {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.8rem 1.1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.18);
-      text-decoration: none;
-      color: var(--bg);
-      background: var(--accent);
-      font-weight: 600;
-      transition: transform .08s ease, filter .2s ease;
-    }
-    .cta:hover { transform: translateY(-1px); filter: brightness(1.03); }
-    .small {
-      margin-top: 1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .list {
-      margin: 0.5rem 0 0;
-      padding-left: 1.1rem;
-    }
-    .list li { margin: 0.25rem 0; }
+
+    /* Woordmerk */
     .brand {
       display: inline-flex;
       align-items: baseline;
-      gap: .6rem;
+      gap: .28rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: .2px;
+      font-size: clamp(2rem, 6vw, 3rem);
     }
-    .dot {
-      display: inline-block;
-      width: .6rem; height: .6rem;
-      border-radius: 999px;
+    .brand .name { color: var(--fg); }
+    .brand .dot {
+      width: .55em;           /* ~halve letterhoogte */
+      height: .55em;
       background: var(--accent);
-      box-shadow: 0 0 12px rgba(34,197,94,.5);
-      translate: 0 2px;
+      border-radius: 999px;
+      display: inline-block;
+      translate: 0 .12em;     /* optisch netjes op de baseline */
+      flex: 0 0 auto;
     }
-    footer { margin-top: 1rem; color: var(--muted); font-size: .85rem; }
+
+    /* Stealth-tekst */
+    .lede {
+      font-size: clamp(1rem, 2.4vw, 1.125rem);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 46rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.14);
+      background: transparent;
+      color: var(--fg);
+      padding: .7rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, border-color .2s ease, transform .08s ease;
+    }
+    .btn:hover { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.28); }
+    .btn:active { transform: translateY(1px); }
+
+    .fineprint {
+      font-size: .875rem;
+      color: #8c93a3;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      margin-top: .5rem;
+      font-size: .8rem;
+      color: #7a8294;
+      text-align: left;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg:#f7f8fb; --fg:#0c0f14; --muted:#445064;
+      }
+      body { background: var(--bg); }
+      .card { background: #ffffff; border-color: rgba(0,0,0,.08); }
+      .btn { color: var(--fg); border-color: rgba(0,0,0,.2); }
+      .btn:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.32); }
+    }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-label="Cofiance Coming Soon">
-    <div class="brand">
-      <h1>Cofiance</h1>
-      <span class="dot" aria-hidden="true"></span>
-    </div>
-    <p class="tagline">Empowering confidence through finance &amp; coaching</p>
-    <p class="lead">
-      We bouwen aan iets nieuws.
-      
-      Cofiance werkt aan een vernieuwende manier om mensen en organisaties te helpen met groei, inzicht en vertrouwen op het gebied van financiën, gedrag en technologie.
-      
-      Wat we doen, blijft nog even onder de radar.
-      
-      Wat we beloven, is helder: meer duidelijkheid, meer vertrouwen, meer regie.
-      
-      Binnenkort meer.
-   </div>
-    <p class="small">
-      Vragen of alvast kennismaken?
-      <a class="cta" href="mailto:info@cofiance.nl?subject=Kennismaking%20Cofiance">Mail ons</a>
-    </p>
-    <footer>&copy; <span id="year"></span> Cofiance. Alle rechten voorbehouden.</footer>
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Cofiance coming soon">
+      <h1 class="brand" aria-label="Cofiance">
+        <span class="name">Cofiance</span><span class="dot" aria-hidden="true"></span>
+      </h1>
+
+      <!-- STEALTH COPY – houdt het vaag, professioneel en onderscheidend -->
+      <p class="lede">
+        We werken in stilte aan iets nieuws. Discreet, solide en vooruitdenkend.
+        <br>
+        Binnenkort meer.
+      </p>
+
+      <div class="cta-row">
+        <!-- Vervang mailadres zodra je dat wilt gebruiken -->
+        <a class="btn" href="mailto:info@cofiance.nl">Contact</a>
+        <!-- Laat staan of verwijder; handig als je later updates wil verzamelen -->
+        <!-- <a class="btn" href="#" aria-disabled="true">Schrijf je in voor updates</a> -->
+      </div>
+
+      <footer>
+        © <span id="yr"></span> Cofiance. Alle rechten voorbehouden.
+        <!-- Houd methodiek en AI-details offline; niets publiekelijk toelichten. -->
+      </footer>
+    </section>
   </main>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // actuele jaartal in footer
+    document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
