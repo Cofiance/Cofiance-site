@@ -12,12 +12,15 @@
 
   <style>
     :root{
-      --bg:#0f1115;
-      --fg:#f5f7fb;
-      --muted:#b9c0cf;
-      --accent:#34d399;        /* groen */
-      --accent-2:#22c55e;      /* groen 2 voor gradients */
-      --card-bg:rgba(255,255,255,.03);
+      /* Kleuren wat warmer en lichter gehouden */
+      --bg:#141922;         /* lichter dan #0f1115 */
+      --bg-2:#0f141b;       /* dieper charcoal */
+      --warm:#ffb86b;       /* zachte warme gloed (laag opaciteit) */
+      --fg:#f7f9fc;         /* bijna-wit */
+      --muted:#c3cad6;      /* bodytekst iets lichter */
+      --accent:#34d399;     /* groen */
+      --accent-2:#22c55e;   /* groen 2 */
+      --card-bg:rgba(255,255,255,.06);
       --card-br:24px;
       --maxw:64rem;
     }
@@ -28,18 +31,21 @@
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
       color:var(--fg);
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      background: radial-gradient(1200px 800px at 70% -10%, #171a21 0%, var(--bg) 60%);
+      /* Warmere, lichtere achtergrond met subtiele gloed */
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(255,184,107,.12) 0%, rgba(255,184,107,0) 50%),
+        radial-gradient(1200px 800px at 70% -10%, #1a2230 0%, var(--bg-2) 55%, var(--bg) 100%);
       overflow-x:hidden;
     }
 
-    /* subtiele filmgrain voor diepte */
+    /* subtiele filmgrain voor diepte (heel licht) */
     body::after{
       content:"";
       position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
       <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'>\
       <filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter>\
-      <rect width='100%%' height='100%%' filter='url(#f)' opacity='.035'/>\
+      <rect width='100%%' height='100%%' filter='url(#f)' opacity='.025'/>\
       </svg>");
       mix-blend-mode:overlay;
     }
@@ -51,23 +57,23 @@
       width:100%;max-width:var(--maxw);
       display:grid;gap:2rem;
       padding:clamp(1.6rem,3vw,2.6rem);
-      border:1px solid rgba(255,255,255,.08);
-      background:var(--card-bg);
-      backdrop-filter:blur(6px);
+      border:1px solid rgba(255,255,255,.12);
+      background:var(--card-bg);              /* lichter dan voorheen */
+      backdrop-filter:blur(7px);
       border-radius:var(--card-br);
-      box-shadow:0 10px 40px rgba(0,0,0,.35);
+      box-shadow:
+        0 10px 40px rgba(0,0,0,.35),
+        0 1px 0 rgba(255,255,255,.06) inset;  /* zachte top-highlight */
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      will-change: transform;
     }
-    /* zachte “beam” achter de kaart voor premium feel */
+    /* warme “beam” achter de kaart, laag-intens */
     .card::before{
       content:"";
-      position:absolute; inset:-2px;
+      position:absolute; inset:-2px; z-index:-1;
       border-radius:calc(var(--card-br) + 2px);
       background:
-        radial-gradient(1200px 400px at 20% -20%, rgba(52,211,153,.12) 0%, rgba(52,211,153,0) 55%),
-        radial-gradient(1000px 300px at 90% 120%, rgba(52,211,153,.08) 0%, rgba(52,211,153,0) 60%);
-      z-index:-1;
+        radial-gradient(1200px 400px at 18% -25%, rgba(255,184,107,.10) 0%, rgba(255,184,107,0) 55%),
+        radial-gradient(900px 320px at 90% 120%, rgba(52,211,153,.10) 0%, rgba(52,211,153,0) 60%);
       filter: blur(2px);
     }
     .card:hover{ transform:translateY(-2px); box-shadow:0 14px 50px rgba(0,0,0,.45) }
@@ -81,30 +87,30 @@
     }
     .brand .name{ color:var(--fg) }
     .brand .dot{
-      width:.55em; height:.55em; background:var(--accent);
-      border-radius:999px; display:inline-block; translate:0 -.05em; flex:0 0 auto;
+      width:.56em; height:.56em; background:var(--accent);
+      border-radius:999px; display:inline-block; translate:0 .02em; /* iets omlaag = baseline match */
+      flex:0 0 auto;
       box-shadow:0 0 .45rem rgba(52,211,153,.55);
     }
-    /* accent-lijn onder het merk */
+    /* accent-lijn onder het merk – dunner en iets transparanter */
     .brand::after{
       content:"";
-      position:absolute; left:.1rem; right:auto; bottom:-.6rem;
-      height:2px; width:0;
+      position:absolute; left:.1rem; bottom:-.6rem;
+      height:2px; width:7.2ch;
       background:linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius:2px;
-      opacity:.9;
+      border-radius:2px; opacity:.75;
     }
 
     /* Hoofdslogan onder Cofiance */
     .tagline{
-      color:#9aa3b2; letter-spacing:.6px; font-style:italic;
-      margin-top:.1rem; margin-bottom:2.4rem;
+      color:#a8b1c2; letter-spacing:.6px; font-style:italic;
+      margin-top:.1rem; margin-bottom:2.2rem;
       text-align:left; margin-left:.25rem;
     }
-    /* compenseer grid-gap zodat de slogan dichter onder het merk valt */
-    .brand + .tagline{ margin-top:-2.8rem }
+    /* dichter onder het merk */
+    .brand + .tagline{ margin-top:-2.7rem }
 
-    /* Bodytekst met ritme */
+    /* Bodytekst – lichter en luchtiger voor leescomfort */
     .lede{
       font-size:clamp(1rem,2.4vw,1.125rem);
       color:var(--muted);
@@ -116,42 +122,34 @@
 
     .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap }
     .btn{
-      appearance:none; border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.02); color:var(--fg);
+      appearance:none; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06); color:var(--fg);
       padding:.72rem 1.05rem; border-radius:12px; font-weight:600; text-decoration:none;
       box-shadow:0 2px 10px rgba(0,0,0,.25);
       transition:transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, gap .2s ease;
       display:inline-flex; align-items:center; gap:.5rem;
     }
-    .btn:hover{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.28); box-shadow:0 6px 24px rgba(0,0,0,.35); gap:.65rem }
+    .btn:hover{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.28); box-shadow:0 6px 24px rgba(0,0,0,.35); gap:.65rem }
     .btn:active{ transform:translateY(1px) scale(.99) }
     .btn .arrow{ display:inline-block; transform:translateX(0); transition:transform .2s ease }
     .btn:hover .arrow{ transform:translateX(2px) }
 
-    footer{ margin-top:.5rem; font-size:.8rem; color:#7a8294; text-align:left }
+    footer{ margin-top:.5rem; font-size:.8rem; color:#8e97a7; text-align:left }
 
-    /* Motion & entrance */
-    @media (prefers-reduced-motion:no-preference){
-      .wrap{ animation:fadeIn .6s ease both }
-      .brand::after{ animation: growline 900ms 120ms ease-out forwards }
-      @keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
-      @keyframes growline{ from{width:0} to{width:7.5ch} } /* lengte optisch afgestemd op ‘Cofiance’ */
-      @keyframes dotPulse{
-        0%,100%{ transform:scale(1); box-shadow:0 0 .35rem rgba(52,211,153,.55) }
-        50%{ transform:scale(1.06); box-shadow:0 0 .6rem rgba(52,211,153,.4) }
-      }
-      .brand .dot{ animation:dotPulse 3.2s ease-in-out infinite }
-    }
-
-    /* Light mode */
+    /* Light mode – automatisch iets warmer en lichter */
     @media (prefers-color-scheme:light){
-      :root{ --bg:#f7f8fb; --fg:#0c0f14; --muted:#445064; --card-bg:#ffffff }
-      body{ background:var(--bg) }
+      :root{
+        --bg:#f5f7fb; --bg-2:#eef1f6;
+        --fg:#0c0f14; --muted:#445064;
+        --card-bg:#ffffff;
+      }
+      body{ background:linear-gradient(180deg,#f7f9fe 0%, #eef2f7 100%) }
       .card{ background:var(--card-bg); border-color:rgba(0,0,0,.08) }
-      .btn{ color:var(--fg); border-color:rgba(0,0,0,.2) }
+      .btn{ color:var(--fg); border-color:rgba(0,0,0,.18) }
       .btn:hover{ background:rgba(0,0,0,.04); border-color:rgba(0,0,0,.32) }
       .brand .dot{ box-shadow:0 0 .4rem rgba(34,197,94,.45) }
-      .brand::after{ opacity:.7 }
+      .brand::after{ opacity:.6 }
+      footer{ color:#616b7a }
     }
   </style>
 </head>
