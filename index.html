@@ -12,16 +12,14 @@
 
   <style>
     :root{
-      /* Kleuren wat warmer en lichter gehouden */
-      --bg:#141922;         /* lichter dan #0f1115 */
-      --bg-2:#0f141b;       /* dieper charcoal */
-      --warm:#ffb86b;       /* zachte warme gloed (laag opaciteit) */
-      --fg:#f7f9fc;         /* bijna-wit */
-      --muted:#c3cad6;      /* bodytekst iets lichter */
-      --accent:#34d399;     /* groen */
-      --accent-2:#22c55e;   /* groen 2 */
+      --bg:#171e25;          /* warmer blauwgrijs */
+      --bg-2:#1c232c;        /* zachtere toon */
+      --fg:#f6f8fb;          /* bijna-wit tekst */
+      --muted:#cbd2de;       /* iets warmer lichtgrijs */
+      --accent:#34d399;      /* groen */
+      --accent-2:#22c55e;
+      --warm:#ffb86b;        /* subtiele amber gloed */
       --card-bg:rgba(255,255,255,.06);
-      --card-br:24px;
       --maxw:64rem;
     }
 
@@ -31,21 +29,23 @@
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
       color:var(--fg);
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      /* Warmere, lichtere achtergrond met subtiele gloed */
+
+      /* Warmere achtergrond met subtiele gradient en gloed */
       background:
-        radial-gradient(900px 520px at 18% 0%, rgba(255,184,107,.12) 0%, rgba(255,184,107,0) 50%),
-        radial-gradient(1200px 800px at 70% -10%, #1a2230 0%, var(--bg-2) 55%, var(--bg) 100%);
+        radial-gradient(1000px 600px at 18% 0%, rgba(255,184,107,.14) 0%, rgba(255,184,107,0) 45%),
+        radial-gradient(1400px 900px at 80% -10%, rgba(52,211,153,.10) 0%, rgba(52,211,153,0) 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       overflow-x:hidden;
     }
 
-    /* subtiele filmgrain voor diepte (heel licht) */
+    /* lichte filmgrain voor textuur */
     body::after{
       content:"";
       position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
       <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'>\
       <filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter>\
-      <rect width='100%%' height='100%%' filter='url(#f)' opacity='.025'/>\
+      <rect width='100%%' height='100%%' filter='url(#f)' opacity='.03'/>\
       </svg>");
       mix-blend-mode:overlay;
     }
@@ -57,26 +57,18 @@
       width:100%;max-width:var(--maxw);
       display:grid;gap:2rem;
       padding:clamp(1.6rem,3vw,2.6rem);
-      border:1px solid rgba(255,255,255,.12);
-      background:var(--card-bg);              /* lichter dan voorheen */
+      border:1px solid rgba(255,255,255,.10);
+      background:var(--card-bg);
       backdrop-filter:blur(7px);
-      border-radius:var(--card-br);
-      box-shadow:
-        0 10px 40px rgba(0,0,0,.35),
-        0 1px 0 rgba(255,255,255,.06) inset;  /* zachte top-highlight */
+      border-radius:24px;
+      box-shadow:0 10px 40px rgba(0,0,0,.35);
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    /* warme “beam” achter de kaart, laag-intens */
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px; z-index:-1;
-      border-radius:calc(var(--card-br) + 2px);
-      background:
-        radial-gradient(1200px 400px at 18% -25%, rgba(255,184,107,.10) 0%, rgba(255,184,107,0) 55%),
-        radial-gradient(900px 320px at 90% 120%, rgba(52,211,153,.10) 0%, rgba(52,211,153,0) 60%);
-      filter: blur(2px);
+
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 50px rgba(0,0,0,.45);
     }
-    .card:hover{ transform:translateY(-2px); box-shadow:0 14px 50px rgba(0,0,0,.45) }
 
     /* Woordmerk */
     .brand{
@@ -88,29 +80,33 @@
     .brand .name{ color:var(--fg) }
     .brand .dot{
       width:.56em; height:.56em; background:var(--accent);
-      border-radius:999px; display:inline-block; translate:0 .02em; /* iets omlaag = baseline match */
-      flex:0 0 auto;
+      border-radius:999px; display:inline-block;
+      translate:0 .05em;   /* nu netjes op baseline */
       box-shadow:0 0 .45rem rgba(52,211,153,.55);
     }
-    /* accent-lijn onder het merk – dunner en iets transparanter */
+
+    /* accentlijn onder merk */
     .brand::after{
       content:"";
       position:absolute; left:.1rem; bottom:-.6rem;
       height:2px; width:7.2ch;
-      background:linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius:2px; opacity:.75;
+      background:linear-gradient(90deg, var(--accent), var(--warm));
+      border-radius:2px; opacity:.7;
     }
 
-    /* Hoofdslogan onder Cofiance */
+    /* Hoofdslogan */
     .tagline{
-      color:#a8b1c2; letter-spacing:.6px; font-style:italic;
-      margin-top:.1rem; margin-bottom:2.2rem;
-      text-align:left; margin-left:.25rem;
+      color:#b8c0cc;
+      letter-spacing:.6px;
+      font-style:italic;
+      margin-top:.1rem;
+      margin-bottom:2.2rem;
+      text-align:left;
+      margin-left:.25rem;
     }
-    /* dichter onder het merk */
-    .brand + .tagline{ margin-top:-2.7rem }
+    .brand + .tagline{ margin-top:-2.6rem }
 
-    /* Bodytekst – lichter en luchtiger voor leescomfort */
+    /* Bodytekst */
     .lede{
       font-size:clamp(1rem,2.4vw,1.125rem);
       color:var(--muted);
@@ -118,41 +114,42 @@
       max-width:46rem;
       text-align:left;
     }
-    .lede br+br{ line-height:2.2 }
 
     .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap }
     .btn{
-      appearance:none; border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06); color:var(--fg);
-      padding:.72rem 1.05rem; border-radius:12px; font-weight:600; text-decoration:none;
+      appearance:none;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:var(--fg);
+      padding:.72rem 1.05rem;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
       box-shadow:0 2px 10px rgba(0,0,0,.25);
       transition:transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, gap .2s ease;
-      display:inline-flex; align-items:center; gap:.5rem;
     }
-    .btn:hover{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.28); box-shadow:0 6px 24px rgba(0,0,0,.35); gap:.65rem }
+
+    .btn:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.28);
+      box-shadow:0 6px 24px rgba(0,0,0,.35);
+      gap:.65rem;
+    }
+
     .btn:active{ transform:translateY(1px) scale(.99) }
-    .btn .arrow{ display:inline-block; transform:translateX(0); transition:transform .2s ease }
-    .btn:hover .arrow{ transform:translateX(2px) }
 
-    footer{ margin-top:.5rem; font-size:.8rem; color:#8e97a7; text-align:left }
-
-    /* Light mode – automatisch iets warmer en lichter */
-    @media (prefers-color-scheme:light){
-      :root{
-        --bg:#f5f7fb; --bg-2:#eef1f6;
-        --fg:#0c0f14; --muted:#445064;
-        --card-bg:#ffffff;
-      }
-      body{ background:linear-gradient(180deg,#f7f9fe 0%, #eef2f7 100%) }
-      .card{ background:var(--card-bg); border-color:rgba(0,0,0,.08) }
-      .btn{ color:var(--fg); border-color:rgba(0,0,0,.18) }
-      .btn:hover{ background:rgba(0,0,0,.04); border-color:rgba(0,0,0,.32) }
-      .brand .dot{ box-shadow:0 0 .4rem rgba(34,197,94,.45) }
-      .brand::after{ opacity:.6 }
-      footer{ color:#616b7a }
+    footer{
+      margin-top:.5rem;
+      font-size:.8rem;
+      color:#9ba5b6;
+      text-align:left;
     }
   </style>
 </head>
+
 <body>
   <main class="wrap">
     <section class="card" role="region" aria-label="Cofiance coming soon">
@@ -175,9 +172,7 @@
       </p>
 
       <div class="cta-row">
-        <a class="btn" href="mailto:info@cofiance.nl" aria-label="Contact via e-mail">
-          Contact <span class="arrow" aria-hidden="true">→</span>
-        </a>
+        <a class="btn" href="mailto:info@cofiance.nl">Contact →</a>
       </div>
 
       <footer>
