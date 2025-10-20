@@ -4,29 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cofiance — Coming Soon</title>
-  <meta name="description" content="Cofiance. Empowering confidence through finance & coaching." />
+  <meta name="description" content="Cofiance. Coming soon." />
   <meta name="robots" content="noindex,nofollow" />
 
-  <!-- Webfont -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #15191e;          /* iets warmer dan zwart */
-      --fg: #f5f7fb;          /* bijna-wit tekst */
-      --muted: #b7bdc9;       /* secundaire tekst */
-      --accent: #34d399;      /* groene punt */
+      --bg: linear-gradient(180deg, #14181d 0%, #1b2228 100%);
+      --fg: #f5f7fb;
+      --muted: #b7bdc9;
+      --accent: #34d399;
       --maxw: 64rem;
     }
 
     * { box-sizing: border-box; }
-
     html, body {
       height: 100%;
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(1600px 900px at 70% -10%, #1c232a 0%, var(--bg) 70%);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: var(--bg);
       color: var(--fg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -43,7 +41,7 @@
       width: 100%;
       max-width: var(--maxw);
       display: grid;
-      gap: 1.8rem;  /* iets compacter */
+      gap: 1.8rem;
       padding: clamp(1.5rem, 3vw, 2.5rem);
       border: 1px solid rgba(255,255,255,.06);
       background: rgba(255,255,255,.03);
@@ -52,7 +50,7 @@
       box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
 
-    /* Merknaam */
+    /* Woordmerk */
     .brand {
       display: inline-flex;
       align-items: baseline;
@@ -60,116 +58,4 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: .2px;
-      font-size: clamp(2rem, 6vw, 3rem);
-    }
-
-    .brand .name { color: var(--fg); }
-
-    .brand .dot {
-      width: .55em;
-      height: .55em;
-      background: var(--accent);
-      border-radius: 999px;
-      display: inline-block;
-      translate: 0 .08em;   /* iets omhoog zodat hij op lijn staat met tekst */
-      flex: 0 0 auto;
-      box-shadow: 0 0 0.35rem rgba(52,211,153,.55);
-    }
-
-    /* Pulse animatie */
-    @media (prefers-reduced-motion: no-preference) {
-      @keyframes dotPulse {
-        0%, 100% { transform: scale(1); box-shadow: 0 0 0.35rem rgba(52,211,153,.55); }
-        50% { transform: scale(1.06); box-shadow: 0 0 0.6rem rgba(52,211,153,.4); }
-      }
-      .brand .dot { animation: dotPulse 3.2s ease-in-out infinite; }
-    }
-
-    /* Hoofdslogan */
-    .tagline {
-      color: #a0a6b5;
-      letter-spacing: 0.6px;
-      font-style: italic;
-      margin-top: 0.15rem;
-      margin-bottom: 1.6rem;  /* iets minder afstand naar body */
-      text-align: left;
-      margin-left: 0.25rem;
-    }
-
-    /* Bodytekst */
-    .lede {
-      font-size: clamp(1rem, 2.4vw, 1.125rem);
-      color: var(--muted);
-      line-height: 1.9;
-      max-width: 46rem;
-      text-align: left;
-    }
-
-    /* CTA-knop */
-    .cta-row {
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      appearance: none;
-      border: 1px solid rgba(255,255,255,.14);
-      background: transparent;
-      color: var(--fg);
-      padding: .7rem 1rem;
-      border-radius: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s ease, border-color .2s ease, transform .08s ease;
-    }
-
-    .btn:hover {
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.28);
-    }
-
-    .btn:active { transform: translateY(1px); }
-
-    footer {
-      margin-top: .5rem;
-      font-size: .8rem;
-      color: #8d95a3;
-      text-align: left;
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f8fb;
-        --fg: #0c0f14;
-        --muted: #445064;
-      }
-      body { background: var(--bg); }
-      .card { background: #ffffff; border-color: rgba(0,0,0,.08); }
-      .btn { color: var(--fg); border-color: rgba(0,0,0,.2); }
-      .btn:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.32); }
-    }
-  </style>
-</head>
-
-<body>
-  <main class="wrap">
-    <section class="card" role="region" aria-label="Cofiance coming soon">
-      <h1 class="brand" aria-label="Cofiance">
-        <span class="name">Cofiance</span><span class="dot" aria-hidden="true"></span>
-      </h1>
-      <p class="tagline">Empowering confidence through finance & coaching</p>
-
-      <p class="lede">
-        We werken in stilte aan iets nieuws.
-        <br><br>
-        Een vernieuwende manier om mensen en organisaties te helpen groeien, met inzicht, vertrouwen en technologie.
-        <br><br>
-        Wat we doen, blijft nog even onder de radar.
-        <br><br>
-        Wat we beloven, is helder: meer duidelijkheid, rust en grip op de financiën.
-        <br><br>
-        Binnenkort meer.
-      </p>
-
-      <
+      font-size: clamp(
