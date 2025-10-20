@@ -4,148 +4,150 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cofiance — Coming Soon</title>
-  <meta name="description" content="Cofiance. Coming soon." />
+  <meta name="description" content="Cofiance. Empowering confidence through finance & coaching." />
   <meta name="robots" content="noindex,nofollow" />
 
+  <!-- Webfont -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#171e25;          /* warmer blauwgrijs */
-      --bg-2:#1c232c;        /* zachtere toon */
-      --fg:#f6f8fb;          /* bijna-wit tekst */
-      --muted:#cbd2de;       /* iets warmer lichtgrijs */
-      --accent:#34d399;      /* groen */
-      --accent-2:#22c55e;
-      --warm:#ffb86b;        /* subtiele amber gloed */
-      --card-bg:rgba(255,255,255,.06);
-      --maxw:64rem;
+    :root {
+      --bg: #15191e;          /* iets warmer dan zwart */
+      --fg: #f5f7fb;          /* bijna-wit tekst */
+      --muted: #b7bdc9;       /* secundaire tekst */
+      --accent: #34d399;      /* groene punt */
+      --maxw: 64rem;
     }
 
-    *{box-sizing:border-box}
-    html,body{
-      height:100%;margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
-      color:var(--fg);
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    * { box-sizing: border-box; }
 
-      /* Warmere achtergrond met subtiele gradient en gloed */
-      background:
-        radial-gradient(1000px 600px at 18% 0%, rgba(255,184,107,.14) 0%, rgba(255,184,107,0) 45%),
-        radial-gradient(1400px 900px at 80% -10%, rgba(52,211,153,.10) 0%, rgba(52,211,153,0) 60%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      overflow-x:hidden;
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1600px 900px at 70% -10%, #1c232a 0%, var(--bg) 70%);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* lichte filmgrain voor textuur */
-    body::after{
-      content:"";
-      position:fixed; inset:0; pointer-events:none;
-      background-image:url("data:image/svg+xml;utf8,\
-      <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'>\
-      <filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter>\
-      <rect width='100%%' height='100%%' filter='url(#f)' opacity='.03'/>\
-      </svg>");
-      mix-blend-mode:overlay;
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 4rem 1.5rem;
     }
 
-    .wrap{min-height:100%;display:grid;place-items:center;padding:4rem 1.5rem}
-
-    .card{
-      position:relative;
-      width:100%;max-width:var(--maxw);
-      display:grid;gap:2rem;
-      padding:clamp(1.6rem,3vw,2.6rem);
-      border:1px solid rgba(255,255,255,.10);
-      background:var(--card-bg);
-      backdrop-filter:blur(7px);
-      border-radius:24px;
-      box-shadow:0 10px 40px rgba(0,0,0,.35);
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    .card {
+      width: 100%;
+      max-width: var(--maxw);
+      display: grid;
+      gap: 1.8rem;  /* iets compacter */
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
 
-    .card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 50px rgba(0,0,0,.45);
+    /* Merknaam */
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: .28rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: .2px;
+      font-size: clamp(2rem, 6vw, 3rem);
     }
 
-    /* Woordmerk */
-    .brand{
-      display:inline-flex; align-items:baseline; gap:.28rem;
-      font-weight:800; line-height:1; letter-spacing:.1px;
-      font-size:clamp(2rem,6vw,3rem);
-      position:relative;
-    }
-    .brand .name{ color:var(--fg) }
-    .brand .dot{
-      width:.56em; height:.56em; background:var(--accent);
-      border-radius:999px; display:inline-block;
-      translate:0 .05em;   /* nu netjes op baseline */
-      box-shadow:0 0 .45rem rgba(52,211,153,.55);
+    .brand .name { color: var(--fg); }
+
+    .brand .dot {
+      width: .55em;
+      height: .55em;
+      background: var(--accent);
+      border-radius: 999px;
+      display: inline-block;
+      translate: 0 .08em;   /* iets omhoog zodat hij op lijn staat met tekst */
+      flex: 0 0 auto;
+      box-shadow: 0 0 0.35rem rgba(52,211,153,.55);
     }
 
-    /* accentlijn onder merk */
-    .brand::after{
-      content:"";
-      position:absolute; left:.1rem; bottom:-.6rem;
-      height:2px; width:7.2ch;
-      background:linear-gradient(90deg, var(--accent), var(--warm));
-      border-radius:2px; opacity:.7;
+    /* Pulse animatie */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes dotPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0.35rem rgba(52,211,153,.55); }
+        50% { transform: scale(1.06); box-shadow: 0 0 0.6rem rgba(52,211,153,.4); }
+      }
+      .brand .dot { animation: dotPulse 3.2s ease-in-out infinite; }
     }
 
     /* Hoofdslogan */
-    .tagline{
-      color:#b8c0cc;
-      letter-spacing:.6px;
-      font-style:italic;
-      margin-top:.1rem;
-      margin-bottom:2.2rem;
-      text-align:left;
-      margin-left:.25rem;
+    .tagline {
+      color: #a0a6b5;
+      letter-spacing: 0.6px;
+      font-style: italic;
+      margin-top: 0.15rem;
+      margin-bottom: 1.6rem;  /* iets minder afstand naar body */
+      text-align: left;
+      margin-left: 0.25rem;
     }
-    .brand + .tagline{ margin-top:-2.6rem }
 
     /* Bodytekst */
-    .lede{
-      font-size:clamp(1rem,2.4vw,1.125rem);
-      color:var(--muted);
-      line-height:1.95;
-      max-width:46rem;
-      text-align:left;
+    .lede {
+      font-size: clamp(1rem, 2.4vw, 1.125rem);
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 46rem;
+      text-align: left;
     }
 
-    .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap }
-    .btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.08);
-      color:var(--fg);
-      padding:.72rem 1.05rem;
-      border-radius:12px;
-      font-weight:600;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-      box-shadow:0 2px 10px rgba(0,0,0,.25);
-      transition:transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, gap .2s ease;
+    /* CTA-knop */
+    .cta-row {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
     }
 
-    .btn:hover{
-      background:rgba(255,255,255,.12);
-      border-color:rgba(255,255,255,.28);
-      box-shadow:0 6px 24px rgba(0,0,0,.35);
-      gap:.65rem;
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.14);
+      background: transparent;
+      color: var(--fg);
+      padding: .7rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, border-color .2s ease, transform .08s ease;
     }
 
-    .btn:active{ transform:translateY(1px) scale(.99) }
+    .btn:hover {
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.28);
+    }
 
-    footer{
-      margin-top:.5rem;
-      font-size:.8rem;
-      color:#9ba5b6;
-      text-align:left;
+    .btn:active { transform: translateY(1px); }
+
+    footer {
+      margin-top: .5rem;
+      font-size: .8rem;
+      color: #8d95a3;
+      text-align: left;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --fg: #0c0f14;
+        --muted: #445064;
+      }
+      body { background: var(--bg); }
+      .card { background: #ffffff; border-color: rgba(0,0,0,.08); }
+      .btn { color: var(--fg); border-color: rgba(0,0,0,.2); }
+      .btn:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.32); }
     }
   </style>
 </head>
@@ -156,33 +158,18 @@
       <h1 class="brand" aria-label="Cofiance">
         <span class="name">Cofiance</span><span class="dot" aria-hidden="true"></span>
       </h1>
-      <p class="tagline">Empowering confidence through finance &amp; coaching</p>
+      <p class="tagline">Empowering confidence through finance & coaching</p>
 
       <p class="lede">
         We werken in stilte aan iets nieuws.
         <br><br>
-        Een vernieuwende manier om mensen en organisaties te helpen groeien,
-        met inzicht, vertrouwen en technologie.
+        Een vernieuwende manier om mensen en organisaties te helpen groeien, met inzicht, vertrouwen en technologie.
         <br><br>
         Wat we doen, blijft nog even onder de radar.
-        <br>
+        <br><br>
         Wat we beloven, is helder: meer duidelijkheid, rust en grip op de financiën.
         <br><br>
         Binnenkort meer.
       </p>
 
-      <div class="cta-row">
-        <a class="btn" href="mailto:info@cofiance.nl">Contact →</a>
-      </div>
-
-      <footer>
-        © <span id="yr"></span> Cofiance. Alle rechten voorbehouden.
-      </footer>
-    </section>
-  </main>
-
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      <
