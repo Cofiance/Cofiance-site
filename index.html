@@ -58,4 +58,125 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: .2px;
-      font-size: clamp(
+      font-size: clamp(2rem, 6vw, 3rem);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.2rem;
+      width: fit-content;
+    }
+    .brand .name { color: var(--fg); }
+    .brand .dot {
+      width: .55em;
+      height: .55em;
+      background: var(--accent);
+      border-radius: 999px;
+      display: inline-block;
+      translate: 0 0.08em; /* punt exact uitlijnen met tekst */
+      flex: 0 0 auto;
+      box-shadow: 0 0 0.35rem rgba(52,211,153,.55);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes dotPulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0.35rem rgba(52,211,153,.55); }
+        50% { transform: scale(1.06); box-shadow: 0 0 0.6rem rgba(52,211,153,.4); }
+      }
+      .brand .dot { animation: dotPulse 3.2s ease-in-out infinite; }
+    }
+
+    /* Hoofdslogan */
+    .tagline {
+      color: #9aa3b2;
+      letter-spacing: 0.6px;
+      font-style: italic;
+      margin-top: 0.3rem;
+      margin-bottom: 1.4rem;  /* verkortte ruimte */
+      text-align: left;
+      margin-left: 0.25rem;
+    }
+
+    /* Bodytekst */
+    .lede {
+      font-size: clamp(1rem, 2.4vw, 1.125rem);
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 46rem;
+      text-align: left;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.14);
+      background: transparent;
+      color: var(--fg);
+      padding: .7rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, border-color .2s ease, transform .08s ease;
+    }
+    .btn:hover { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.28); }
+    .btn:active { transform: translateY(1px); }
+
+    footer {
+      margin-top: .5rem;
+      font-size: .8rem;
+      color: #7a8294;
+      text-align: left;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: linear-gradient(180deg, #f9fafb 0%, #eaeef2 100%);
+        --fg: #0c0f14;
+        --muted: #445064;
+      }
+      body { background: var(--bg); }
+      .card { background: #ffffff; border-color: rgba(0,0,0,.08); }
+      .btn { color: var(--fg); border-color: rgba(0,0,0,.2); }
+      .btn:hover { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.32); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Cofiance coming soon">
+      <h1 class="brand" aria-label="Cofiance">
+        <span class="name">Cofiance</span><span class="dot" aria-hidden="true"></span>
+      </h1>
+
+      <p class="tagline">Empowering confidence through finance & coaching</p>
+
+      <p class="lede">
+        We werken in stilte aan iets nieuws.
+        <br><br>
+        Een vernieuwende manier om mensen en organisaties te helpen groeien, met inzicht,
+        vertrouwen en technologie.
+        <br><br>
+        Wat we doen, blijft nog even onder de radar.
+        <br><br>
+        Wat we beloven, is helder: meer duidelijkheid, rust en grip op de financiën.
+        <br><br>
+        Binnenkort meer.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn" href="mailto:info@cofiance.nl">Contact →</a>
+      </div>
+
+      <footer>
+        © <span id="yr"></span> Cofiance. Alle rechten voorbehouden.
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
